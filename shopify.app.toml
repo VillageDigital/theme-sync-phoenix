@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "92b260e8e42b3bf17e3faa2f2f70db44"
+name = "ThemeSyncPhoenix"
+handle = "theme-sync-phoenix"
+application_url = "https://village-digital-themesync.ngrok.app"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = false
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+scopes = "read_themes,write_themes,read_products,write_products"
+
+[auth]
+redirect_urls = [ "https://village-digital-themesync.ngrok.app/auth/callback" ]
+
+[pos]
+embedded = false
+
